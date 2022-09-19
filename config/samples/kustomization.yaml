@@ -1,0 +1,6 @@
+## Append samples you want in your CSV to this file as resources ##
+resources:
+- messages_v1beta1_kafkaconsumer.yaml
+- messages_v1beta1_kafkaproducer.yaml
+- messages_v1beta1_kafkaacl.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples
