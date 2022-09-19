@@ -1,0 +1,9 @@
+domain: kubbee.tech
+layout:
+- go.kubebuilder.io/v3
+plugins:
+  manifests.sdk.operatorframework.io/v2: {}
+  scorecard.sdk.operatorframework.io/v2: {}
+projectName: kafka-messaging-topology-operator
+repo: github.com/kubbee/kafka-messaging-topology-operator
+version: "3"
