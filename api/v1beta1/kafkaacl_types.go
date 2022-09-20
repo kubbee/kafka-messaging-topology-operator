@@ -25,17 +25,12 @@ import (
 
 // KafkaACLSpec defines the desired state of KafkaACL
 type KafkaACLSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of KafkaACL. Edit kafkaacl_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
 }
 
 // KafkaACLStatus defines the observed state of KafkaACL
 type KafkaACLStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	ObservedGeneration int64       `json:"observedGeneration,omitempty"`
+	Conditions         []Condition `json:"conditions,omitempty"`
 }
 
 //+kubebuilder:object:root=true

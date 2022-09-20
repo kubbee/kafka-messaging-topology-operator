@@ -25,17 +25,14 @@ import (
 
 // KafkaProducerSpec defines the desired state of KafkaProducer
 type KafkaProducerSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of KafkaProducer. Edit kafkaproducer_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Topic      string `json:"topic"`
+	Partitions int32  `json:"partitions"`
 }
 
 // KafkaProducerStatus defines the observed state of KafkaProducer
 type KafkaProducerStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	ObservedGeneration int64       `json:"observedGeneration,omitempty"`
+	Conditions         []Condition `json:"conditions,omitempty"`
 }
 
 //+kubebuilder:object:root=true

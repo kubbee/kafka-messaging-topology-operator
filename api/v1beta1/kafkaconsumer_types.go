@@ -20,22 +20,16 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
 // KafkaConsumerSpec defines the desired state of KafkaConsumer
 type KafkaConsumerSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of KafkaConsumer. Edit kafkaconsumer_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Topic  string `json:"topic"`
+	Domain string `json:"domain"`
 }
 
 // KafkaConsumerStatus defines the observed state of KafkaConsumer
 type KafkaConsumerStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	ObservedGeneration int64       `json:"observedGeneration,omitempty"`
+	Conditions         []Condition `json:"conditions,omitempty"`
 }
 
 //+kubebuilder:object:root=true

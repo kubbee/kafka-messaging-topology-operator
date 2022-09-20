@@ -34,4 +34,13 @@ resources:
   kind: KafkaACL
   path: github.com/kubbee/kafka-messaging-topology-operator/api/v1beta1
   version: v1beta1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: kubbee.tech
+  group: messages
+  kind: KafkaReference
+  path: github.com/kubbee/kafka-messaging-topology-operator/api/v1beta1
+  version: v1beta1
 version: "3"

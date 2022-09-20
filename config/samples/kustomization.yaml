@@ -3,4 +3,5 @@ resources:
 - messages_v1beta1_kafkaconsumer.yaml
 - messages_v1beta1_kafkaproducer.yaml
 - messages_v1beta1_kafkaacl.yaml
+- messages_v1beta1_kafkareference.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples
