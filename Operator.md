@@ -8,4 +8,4 @@
 
 > operator-sdk create api --group messages --version v1beta1 --kind KafkaACL --resource --controller
 
-> 
+> operator-sdk create api --group messages --version v1beta1 --kind KafkaReference --resource --controller

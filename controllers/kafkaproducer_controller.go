@@ -22,7 +22,9 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/controller-runtime/pkg/log"
+	"sigs.k8s.io/controller-runtime/pkg/reconcile"
+
+	k8sErrors "k8s.io/apimachinery/pkg/api/errors"
 
 	messagesv1beta1 "github.com/kubbee/kafka-messaging-topology-operator/api/v1beta1"
 )
@@ -47,9 +49,30 @@ type KafkaProducerReconciler struct {
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.11.0/pkg/reconcile
 func (r *KafkaProducerReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	_ = log.FromContext(ctx)
+	logger := ctrl.LoggerFrom(ctx)
+	logger.Info("Reconcile")
 
-	// TODO(user): your logic here
+	kafkaProducer := &messagesv1beta1.KafkaProducer{}
+
+	if err := r.Get(ctx, req.NamespacedName, kafkaProducer); err != nil {
+		if k8sErrors.IsNotFound(err) {
+			if !kafkaProducer.ObjectMeta.DeletionTimestamp.IsZero() {
+				logger.Info("Was marked for deletion.")
+				return reconcile.Result{}, nil
+			}
+		}
+		return reconcile.Result{}, nil
+	}
+
+	return r.declareTopic(ctx, req, kafkaProducer)
+}
+
+// declateTopic This function is reponsible to orchestrate the topic creation
+func (r *KafkaProducerReconciler) declareTopic(ctx context.Context, req ctrl.Request, kafkaProducer *messagesv1beta1.KafkaProducer) (ctrl.Result, error) {
+	logger := ctrl.LoggerFrom(ctx)
+	logger.Info("declareKafkaTopic")
+
+	// TODO implements the creation topic
 
 	return ctrl.Result{}, nil
 }
